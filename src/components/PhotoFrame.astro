@@ -1,15 +1,25 @@
 ---
+interface Props {
+  alt: string;
+  class?: string;
+}
+
+const { alt, class: className } = Astro.props;
 ---
 
-<div class="group relative aspect-square w-40 shrink-0 overflow-hidden rounded-lg border border-neutral-800 shadow-lg shadow-black/40 sm:w-48">
-  <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-500/25 via-neutral-800 to-neutral-950">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="h-20 w-20 text-neutral-500 sm:h-24 sm:w-24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-      />
-    </svg>
+<div class:list={['group relative aspect-square shrink-0', className]}>
+  <div
+    class="absolute -bottom-4 -right-4 h-full w-full rounded-lg border-2 border-amber-400 transition-transform duration-300 ease-out group-hover:-bottom-5 group-hover:-right-5"
+  >
   </div>
-  <div class="absolute inset-0 bg-amber-400/20 transition-opacity duration-300 group-hover:opacity-0"></div>
+  <div class="relative isolate h-full w-full overflow-hidden rounded-lg border border-neutral-800 shadow-lg shadow-black/40">
+    <img
+      src="/salguero_oviedo.png"
+      alt={alt}
+      width="2289"
+      height="1898"
+      class="h-full w-full object-cover grayscale transition duration-300 group-hover:grayscale-0"
+    />
+    <div class="absolute inset-0 bg-amber-400 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-0"></div>
+  </div>
 </div>

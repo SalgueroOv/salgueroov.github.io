@@ -1,10 +1,5 @@
 import type { Lang } from '../i18n/utils';
 
-export interface Aptitude {
-  title: string;
-  description: string;
-}
-
 export interface ExperienceItem {
   role: string;
   company: string;
@@ -25,16 +20,10 @@ export interface ProjectItem {
   url?: string;
 }
 
-export interface LanguageItem {
-  name: string;
-  level: string;
-}
-
 export interface CvContent {
   name: string;
   role: string;
-  tagline: string;
-  summary: string;
+  summary: string[];
   contact: {
     email: string;
     phone: string;
@@ -43,21 +32,19 @@ export interface CvContent {
     github: string;
   };
   stack: string[];
-  aptitudes: Aptitude[];
   experience: ExperienceItem[];
   education: EducationItem[];
   projects: ProjectItem[];
-  languages: LanguageItem[];
-  interests: string[];
 }
 
 export const cv: Record<Lang, CvContent> = {
   es: {
     name: 'Alejandro Salguero Oviedo',
     role: 'Full Stack Developer | AI-Assisted Development',
-    tagline: 'Experiencia complementaria en administración de sistemas Linux y virtualización.',
-    summary:
-      'Desarrollador con experiencia en aplicaciones Java para investigación clínica. Combino el desarrollo full stack con el uso de asistentes de IA (Claude Code, Copilot) para acelerar la implementación, manteniendo una revisión manual rigurosa del código. Gestiono mis tareas de forma autónoma y comunico conceptos técnicos a equipos no informáticos mediante analogías y personificaciones, facilitando la colaboración.',
+    summary: [
+      'Desarrollador con experiencia en aplicaciones Java para investigación clínica. Combino el desarrollo full stack con el uso de asistentes de IA (Claude Code, Copilot) para acelerar la implementación, manteniendo una revisión manual rigurosa del código.',
+      'También superviso la administración de sistemas Linux y virtualización, y priorizo mis tareas con Notion a corto, medio y largo plazo. Ante problemas nuevos consulto primero a la IA y recurro a compañeros con más experiencia cuando hace falta, me adapto con naturalidad a los cambios de requisitos, y comunico conceptos técnicos a equipos no informáticos mediante analogías y personificaciones.'
+    ],
     contact: {
       email: 'salguero.ov@gmail.com',
       phone: '685 201 801',
@@ -83,36 +70,6 @@ export const cv: Record<Lang, CvContent> = {
       'Bash',
       'REDCap',
       'Notion'
-    ],
-    aptitudes: [
-      {
-        title: 'Resolución de problemas',
-        description: 'Primero consulto a la IA y, si es necesario, recurro a compañeros con más experiencia.'
-      },
-      {
-        title: 'Organización',
-        description: 'Priorizo tareas por urgencia y motivación personal. Uso Notion con vista de corto, medio y largo plazo.'
-      },
-      {
-        title: 'Comunicación con no técnicos',
-        description: 'Explico conceptos complejos personificando elementos del sistema, lo que facilita el entendimiento mutuo.'
-      },
-      {
-        title: 'Adaptabilidad',
-        description: 'Pasé de programar manualmente a hacerlo mediante IA, adoptando el nuevo flujo con naturalidad.'
-      },
-      {
-        title: 'Atención al detalle',
-        description: 'Siempre reviso manualmente el código generado para evitar bugs en un entorno con datos sensibles.'
-      },
-      {
-        title: 'Gestión de cambios',
-        description: 'Asumo con resiliencia los ajustes de requisitos, aunque a veces impliquen rehacer trabajo.'
-      },
-      {
-        title: 'Formación',
-        description: 'He guiado a programadores en prácticas creando tutoriales y documentación específica.'
-      }
     ],
     experience: [
       {
@@ -162,19 +119,15 @@ export const cv: Record<Lang, CvContent> = {
         tech: ['Electron', 'Vue', 'Python'],
         url: 'https://github.com/SalgueroOv/mergerlab'
       }
-    ],
-    languages: [
-      { name: 'Español', level: 'Nativo' },
-      { name: 'Inglés', level: 'Lectura técnica fluida, conversación básica' }
-    ],
-    interests: ['Juegos de mesa', 'Ciclismo de montaña', 'Senderismo']
+    ]
   },
   en: {
     name: 'Alejandro Salguero Oviedo',
     role: 'Full Stack Developer | AI-Assisted Development',
-    tagline: 'Additional experience in Linux systems administration and virtualization.',
-    summary:
-      "Developer with experience building Java applications for clinical research. I combine full-stack development with AI assistants (Claude Code, Copilot) to speed up implementation, while keeping a rigorous manual review of the generated code. I manage my own tasks autonomously and communicate technical concepts to non-technical teams through analogies and personification, making collaboration easier.",
+    summary: [
+      'Developer with experience building Java applications for clinical research. I combine full-stack development with AI assistants (Claude Code, Copilot) to speed up implementation, while keeping a rigorous manual review of the generated code.',
+      'I also handle Linux systems administration and virtualization, and prioritize my tasks in Notion across short, medium and long-term views. I consult AI first when facing new problems and turn to more experienced colleagues when needed, adapt naturally to shifting requirements, and communicate technical concepts to non-technical teams through analogies and personification.'
+    ],
     contact: {
       email: 'salguero.ov@gmail.com',
       phone: '685 201 801',
@@ -200,36 +153,6 @@ export const cv: Record<Lang, CvContent> = {
       'Bash',
       'REDCap',
       'Notion'
-    ],
-    aptitudes: [
-      {
-        title: 'Problem solving',
-        description: 'I consult AI first and, when needed, turn to more experienced colleagues.'
-      },
-      {
-        title: 'Organization',
-        description: 'I prioritize tasks by urgency and personal motivation, using Notion with short-, medium- and long-term views.'
-      },
-      {
-        title: 'Communicating with non-technical audiences',
-        description: 'I explain complex concepts by personifying system components, which makes mutual understanding easier.'
-      },
-      {
-        title: 'Adaptability',
-        description: 'I moved from writing code by hand to doing it with AI assistance, adopting the new workflow naturally.'
-      },
-      {
-        title: 'Attention to detail',
-        description: 'I always manually review AI-generated code to avoid bugs in an environment with sensitive data.'
-      },
-      {
-        title: 'Change management',
-        description: 'I handle shifting requirements with resilience, even when it means redoing work.'
-      },
-      {
-        title: 'Mentoring',
-        description: "I've guided trainee developers by creating tutorials and specific documentation."
-      }
     ],
     experience: [
       {
@@ -279,11 +202,6 @@ export const cv: Record<Lang, CvContent> = {
         tech: ['Electron', 'Vue', 'Python'],
         url: 'https://github.com/SalgueroOv/mergerlab'
       }
-    ],
-    languages: [
-      { name: 'Spanish', level: 'Native' },
-      { name: 'English', level: 'Fluent technical reading, basic conversation' }
-    ],
-    interests: ['Board games', 'Mountain biking', 'Hiking']
+    ]
   }
 };

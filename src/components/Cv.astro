@@ -13,29 +13,18 @@ const t = useTranslations(lang);
 const data = cv[lang];
 ---
 
-<section id="about" class="scroll-mt-24">
-  <div class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
-    <div>
+<section id="about" class="scroll-mt-24 sm:max-w-3xl">
+  <div class="flex flex-col-reverse gap-10 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
+    <div class="sm:flex-1">
       <h1 class="text-3xl font-bold text-neutral-100 sm:text-4xl">{data.name}</h1>
       <p class="mt-2 text-lg font-medium text-amber-300">{data.role}</p>
-      <p class="mt-3 max-w-md text-sm leading-relaxed text-neutral-400">{data.tagline}</p>
+
+      <div class="mt-10 space-y-4 text-base leading-relaxed text-neutral-300">
+        {data.summary.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
     </div>
-    <PhotoFrame />
+    <PhotoFrame alt={data.name} class="w-44 sm:w-60 lg:w-72" />
   </div>
-
-  <p class="mt-10 max-w-xl text-base leading-relaxed text-neutral-300">{data.summary}</p>
-
-  <h3 class="mt-10 text-xs font-semibold tracking-widest text-neutral-200">{t('section.aptitudes').toUpperCase()}</h3>
-  <ul class="mt-4 grid gap-x-8 gap-y-5 sm:grid-cols-2">
-    {
-      data.aptitudes.map((item) => (
-        <li>
-          <p class="text-sm font-semibold text-neutral-200">{item.title}</p>
-          <p class="mt-1 text-sm leading-relaxed text-neutral-400">{item.description}</p>
-        </li>
-      ))
-    }
-  </ul>
 
   <h3 class="mt-10 text-xs font-semibold tracking-widest text-neutral-200">{t('section.stack').toUpperCase()}</h3>
   <ul class="mt-4 flex flex-wrap gap-2">
@@ -47,39 +36,18 @@ const data = cv[lang];
       ))
     }
   </ul>
-
-  <div class="mt-10 grid gap-8 sm:grid-cols-2">
-    <div>
-      <h3 class="text-xs font-semibold tracking-widest text-neutral-200">{t('section.languages').toUpperCase()}</h3>
-      <ul class="mt-4 space-y-2">
-        {
-          data.languages.map((item) => (
-            <li class="text-sm text-neutral-400">
-              <span class="font-medium text-neutral-200">{item.name}</span> — {item.level}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div>
-      <h3 class="text-xs font-semibold tracking-widest text-neutral-200">{t('section.interests').toUpperCase()}</h3>
-      <ul class="mt-4 space-y-2">
-        {data.interests.map((item) => <li class="text-sm text-neutral-400">{item}</li>)}
-      </ul>
-    </div>
-  </div>
 </section>
 
-<section id="experience" class="mt-24 scroll-mt-24">
+<section id="experience" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-2xl sm:ml-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.experience').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
   </h2>
-  <div class="mt-8 sm:flex sm:gap-8" data-tabs>
+  <div class="mt-8 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-10" data-tabs>
     <div
       role="tablist"
       aria-label={t('nav.experience')}
-      class="flex overflow-x-auto sm:block sm:w-56 sm:shrink-0 sm:overflow-visible sm:border-l sm:border-neutral-800"
+      class="flex overflow-x-auto sm:block sm:overflow-visible sm:border-l sm:border-neutral-800"
     >
       {
         data.experience.map((item, i) => (
@@ -91,14 +59,14 @@ const data = cv[lang];
             aria-selected={i === 0}
             data-tab-trigger={i}
             data-active={i === 0}
-            class="tab-trigger shrink-0 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-left text-sm font-medium text-neutral-400 transition-colors hover:bg-neutral-900/40 hover:text-amber-300 data-[active=true]:border-amber-400 data-[active=true]:text-amber-300 sm:w-full sm:border-b-0 sm:border-l-2 sm:-ml-px"
+            class="tab-trigger shrink-0 whitespace-nowrap border-b-2 border-transparent px-4 py-3 text-left text-sm font-medium text-neutral-400 transition-colors hover:bg-neutral-900/40 hover:text-amber-300 data-[active=true]:border-amber-400 data-[active=true]:text-amber-300 sm:w-full sm:whitespace-normal sm:border-b-0 sm:border-l-2 sm:-ml-px"
           >
             {item.company.split(' — ')[0]}
           </button>
         ))
       }
     </div>
-    <div class="mt-6 flex-1 sm:mt-0">
+    <div class="mt-6 min-w-0 sm:mt-0">
       {
         data.experience.map((item, i) => (
           <div
@@ -148,27 +116,26 @@ const data = cv[lang];
   });
 </script>
 
-<section id="education" class="mt-24 scroll-mt-24">
+<section id="education" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-xl">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.education').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
   </h2>
-  <ul class="mt-8 space-y-6">
+  <ol class="mt-10 space-y-10 border-l border-neutral-800 pl-8">
     {
       data.education.map((item) => (
-        <li class="sm:grid sm:grid-cols-[7rem_1fr] sm:gap-6">
-          <p class="text-xs font-medium uppercase tracking-wide text-neutral-500 sm:pt-1">{item.period.split(' · ')[0]}</p>
-          <div>
-            <p class="font-semibold text-neutral-100">{item.title}</p>
-            <p class="mt-1 text-sm text-neutral-400">{item.institution}</p>
-          </div>
+        <li class="relative">
+          <span class="absolute -left-[2.3rem] top-1 h-3 w-3 rounded-full border-2 border-amber-400 bg-neutral-950" />
+          <p class="text-xs font-medium uppercase tracking-wide text-neutral-500">{item.period}</p>
+          <p class="mt-2 font-semibold text-neutral-100">{item.title}</p>
+          <p class="mt-1 text-sm text-neutral-400">{item.institution}</p>
         </li>
       ))
     }
-  </ul>
+  </ol>
 </section>
 
-<section id="projects" class="mt-24 scroll-mt-24">
+<section id="projects" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-2xl sm:mx-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.projects').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
@@ -203,19 +170,21 @@ const data = cv[lang];
   </ul>
 </section>
 
-<section id="contact" class="mt-24 scroll-mt-24 pb-8">
+<section id="contact" class="mt-32 scroll-mt-24 pb-8 sm:mt-44 sm:max-w-md sm:mx-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.contact').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
   </h2>
-  <h3 class="mt-8 text-2xl font-bold text-neutral-100 sm:text-3xl">{t('contact.heading')}</h3>
-  <p class="mt-4 max-w-md text-sm leading-relaxed text-neutral-400">{t('contact.body')}</p>
-  <a
-    href={`mailto:${data.contact.email}`}
-    class="mt-8 inline-block rounded-md border border-amber-400/40 px-8 py-4 font-mono text-sm text-amber-300 transition-colors hover:bg-amber-400/10"
-  >
-    {t('contact.cta')}
-  </a>
-  <p class="mt-8 text-xs text-neutral-600">{data.contact.phone} · {data.contact.location}</p>
-  <p class="mt-1 text-xs text-neutral-600">{t('misc.references')}</p>
+  <div class="sm:text-center">
+    <h3 class="mt-8 text-2xl font-bold text-neutral-100 sm:text-3xl">{t('contact.heading')}</h3>
+    <p class="mt-4 text-sm leading-relaxed text-neutral-400 sm:mx-auto">{t('contact.body')}</p>
+    <a
+      href={`mailto:${data.contact.email}`}
+      class="mt-8 inline-block rounded-md border border-amber-400/40 px-8 py-4 font-mono text-sm text-amber-300 transition-colors hover:bg-amber-400/10"
+    >
+      {t('contact.cta')}
+    </a>
+    <p class="mt-8 text-xs text-neutral-600">{data.contact.phone} · {data.contact.location}</p>
+    <p class="mt-1 text-xs text-neutral-600">{t('misc.references')}</p>
+  </div>
 </section>
