@@ -1,0 +1,74 @@
+---
+import { cv } from '../data/cv';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const data = cv[lang];
+---
+
+<section class="mx-auto max-w-4xl px-4 py-16">
+  <h1 class="text-4xl font-bold">{data.name}</h1>
+  <p class="mt-2 text-xl text-slate-600 dark:text-slate-400">{data.role}</p>
+  <p class="mt-4 max-w-2xl text-slate-700 dark:text-slate-300">{data.summary}</p>
+</section>
+
+<section id="about" class="mx-auto max-w-4xl px-4 py-16">
+  <h2 class="text-2xl font-semibold">{t('nav.about')}</h2>
+  <p class="mt-4 text-slate-500">TODO: sección "sobre mí".</p>
+</section>
+
+<section id="experience" class="mx-auto max-w-4xl px-4 py-16">
+  <h2 class="text-2xl font-semibold">{t('nav.experience')}</h2>
+  {data.experience.length === 0 && <p class="mt-4 text-slate-500">TODO: añadir experiencia.</p>}
+  <ul class="mt-6 space-y-6">
+    {
+      data.experience.map((item) => (
+        <li>
+          <p class="font-medium">{item.role} · {item.company}</p>
+          <p class="text-sm text-slate-500">{item.period}</p>
+          <p class="mt-1 text-slate-700 dark:text-slate-300">{item.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section id="projects" class="mx-auto max-w-4xl px-4 py-16">
+  <h2 class="text-2xl font-semibold">{t('nav.projects')}</h2>
+  {data.projects.length === 0 && <p class="mt-4 text-slate-500">TODO: añadir proyectos.</p>}
+  <ul class="mt-6 grid gap-6 sm:grid-cols-2">
+    {
+      data.projects.map((project) => (
+        <li class="rounded-lg border border-slate-200 p-4 dark:border-slate-800">
+          <p class="font-medium">{project.name}</p>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{project.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section id="skills" class="mx-auto max-w-4xl px-4 py-16">
+  <h2 class="text-2xl font-semibold">{t('nav.skills')}</h2>
+  {data.skills.length === 0 && <p class="mt-4 text-slate-500">TODO: añadir habilidades.</p>}
+  <ul class="mt-6 flex flex-wrap gap-2">
+    {
+      data.skills.map((skill) => (
+        <li class="rounded-full bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">{skill}</li>
+      ))
+    }
+  </ul>
+</section>
+
+<section id="contact" class="mx-auto max-w-4xl px-4 py-16">
+  <h2 class="text-2xl font-semibold">{t('nav.contact')}</h2>
+  <p class="mt-4">
+    <a href={`mailto:${data.contact.email}`} class="underline">{data.contact.email}</a>
+  </p>
+</section>
