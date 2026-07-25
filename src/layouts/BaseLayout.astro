@@ -13,7 +13,7 @@ const { title, lang } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,11 +22,15 @@ const { title, lang } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
-    <Header lang={lang} />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+  <body class="bg-slate-950 text-slate-400 antialiased selection:bg-emerald-400/20 selection:text-emerald-200">
+    <div class="lg:flex">
+      <Header lang={lang} />
+      <main class="px-6 py-16 sm:px-12 lg:ml-[24rem] lg:flex-1 lg:px-24 lg:py-24">
+        <div class="mx-auto max-w-2xl">
+          <slot />
+          <Footer lang={lang} />
+        </div>
+      </main>
+    </div>
   </body>
 </html>

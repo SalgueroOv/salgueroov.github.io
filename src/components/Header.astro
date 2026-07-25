@@ -1,6 +1,7 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { useTranslations } from '../i18n/utils';
+import { cv } from '../data/cv';
 import type { Lang } from '../i18n/utils';
 
 interface Props {
@@ -9,19 +10,90 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const data = cv[lang];
 const base = lang === 'es' ? '' : '/en';
+
+const navItems = [
+  { id: 'about', label: t('nav.about') },
+  { id: 'experience', label: t('nav.experience') },
+  { id: 'education', label: t('nav.education') },
+  { id: 'projects', label: t('nav.projects') },
+  { id: 'contact', label: t('nav.contact') }
+];
 ---
 
-<header class="border-b border-slate-200 dark:border-slate-800">
-  <nav class="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-    <a href={base || '/'} class="font-semibold">Alejandro Salguero</a>
-    <ul class="flex flex-wrap gap-6 text-sm">
-      <li><a href={`${base}/#about`}>{t('nav.about')}</a></li>
-      <li><a href={`${base}/#experience`}>{t('nav.experience')}</a></li>
-      <li><a href={`${base}/#projects`}>{t('nav.projects')}</a></li>
-      <li><a href={`${base}/#skills`}>{t('nav.skills')}</a></li>
-      <li><a href={`${base}/#contact`}>{t('nav.contact')}</a></li>
+<header
+  class="border-b border-slate-800 px-6 py-10 sm:px-12 lg:fixed lg:flex lg:h-screen lg:w-[24rem] lg:flex-col lg:justify-between lg:border-b-0 lg:border-r lg:px-12 lg:py-16"
+>
+  <div>
+    <a href={base || '/'} class="text-3xl font-bold text-slate-100 hover:text-emerald-300">
+      {data.name}
+    </a>
+    <p class="mt-2 text-lg font-medium text-slate-200">{data.role}</p>
+    <p class="mt-3 max-w-xs text-sm leading-relaxed text-slate-400">{data.tagline}</p>
+
+    <nav class="mt-10 hidden lg:block" aria-label="Primary">
+      <ul class="space-y-3 text-xs font-semibold tracking-widest">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={`${base}/#${item.id}`}
+                data-nav-link={item.id}
+                class="nav-link group flex items-center gap-3 text-slate-400 transition-colors hover:text-emerald-300"
+              >
+                <span class="nav-line h-px w-8 bg-slate-600 transition-all group-hover:w-12 group-hover:bg-emerald-300" />
+                {item.label.toUpperCase()}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mt-10 lg:mt-0">
+    <ul class="flex flex-wrap gap-x-4 gap-y-2 font-mono text-sm text-slate-400">
+      <li><a href={`mailto:${data.contact.email}`} class="hover:text-emerald-300">{data.contact.email}</a></li>
+      <li><a href={data.contact.github} target="_blank" rel="noreferrer" class="hover:text-emerald-300">GitHub</a></li>
+      <li><a href={data.contact.linkedin} target="_blank" rel="noreferrer" class="hover:text-emerald-300">LinkedIn</a></li>
     </ul>
-    <LanguageSwitcher lang={lang} />
-  </nav>
+    <p class="mt-2 text-sm text-slate-500">{data.contact.location}</p>
+    <div class="mt-6">
+      <LanguageSwitcher lang={lang} />
+    </div>
+  </div>
 </header>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  if (links.length) {
+    const sections = Array.from(links)
+      .map((link) => document.getElementById(link.dataset.navLink ?? ''))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const setActive = (id: string | undefined) => {
+      links.forEach((link) => {
+        const isActive = link.dataset.navLink === id;
+        link.classList.toggle('text-emerald-300', isActive);
+        link.classList.toggle('text-slate-400', !isActive);
+        const line = link.querySelector<HTMLElement>('.nav-line');
+        line?.classList.toggle('bg-emerald-300', isActive);
+        line?.classList.toggle('w-12', isActive);
+        line?.classList.toggle('bg-slate-600', !isActive);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        if (visible.length > 0) {
+          setActive(visible[0].target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
