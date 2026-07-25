@@ -26,7 +26,6 @@ export interface CvContent {
   summary: string[];
   contact: {
     email: string;
-    phone: string;
     location: string;
     linkedin: string;
     github: string;
@@ -43,11 +42,11 @@ export const cv: Record<Lang, CvContent> = {
     role: 'Full Stack Developer | AI-Assisted Development',
     summary: [
       'Desarrollador con experiencia en aplicaciones Java para investigación clínica. Combino el desarrollo full stack con el uso de asistentes de IA (Claude Code, Copilot) para acelerar la implementación, manteniendo una revisión manual rigurosa del código.',
-      'También superviso la administración de sistemas Linux y virtualización, y priorizo mis tareas con Notion a corto, medio y largo plazo. Ante problemas nuevos consulto primero a la IA y recurro a compañeros con más experiencia cuando hace falta, me adapto con naturalidad a los cambios de requisitos, y comunico conceptos técnicos a equipos no informáticos mediante analogías y personificaciones.'
+      'También superviso la administración de sistemas Linux y virtualización, y priorizo mis tareas con Notion a corto, medio y largo plazo. Ante problemas nuevos consulto primero a la IA y recurro a compañeros con más experiencia cuando hace falta, me adapto con naturalidad a los cambios de requisitos, y comunico conceptos técnicos a equipos no informáticos mediante analogías y personificaciones.',
+      'Vivo en Dos Hermanas, Sevilla.'
     ],
     contact: {
       email: 'salguero.ov@gmail.com',
-      phone: '685 201 801',
       location: 'Dos Hermanas, Sevilla',
       linkedin: 'https://www.linkedin.com/in/asalguerov',
       github: 'https://github.com/SalgueroOv'
@@ -126,11 +125,11 @@ export const cv: Record<Lang, CvContent> = {
     role: 'Full Stack Developer | AI-Assisted Development',
     summary: [
       'Developer with experience building Java applications for clinical research. I combine full-stack development with AI assistants (Claude Code, Copilot) to speed up implementation, while keeping a rigorous manual review of the generated code.',
-      'I also handle Linux systems administration and virtualization, and prioritize my tasks in Notion across short, medium and long-term views. I consult AI first when facing new problems and turn to more experienced colleagues when needed, adapt naturally to shifting requirements, and communicate technical concepts to non-technical teams through analogies and personification.'
+      'I also handle Linux systems administration and virtualization, and prioritize my tasks in Notion across short, medium and long-term views. I consult AI first when facing new problems and turn to more experienced colleagues when needed, adapt naturally to shifting requirements, and communicate technical concepts to non-technical teams through analogies and personification.',
+      'I live in Dos Hermanas, Seville (Spain).'
     ],
     contact: {
       email: 'salguero.ov@gmail.com',
-      phone: '685 201 801',
       location: 'Dos Hermanas, Seville (Spain)',
       linkedin: 'https://www.linkedin.com/in/asalguerov',
       github: 'https://github.com/SalgueroOv'

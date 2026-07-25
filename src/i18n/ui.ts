@@ -19,8 +19,7 @@ export const ui = {
       'Sigo dando forma a esta web y aprendiendo cada día con nuevas herramientas de IA. Si tienes un proyecto entre manos o simplemente quieres hablar de desarrollo, tengo la bandeja de entrada abierta.',
     'contact.cta': 'Escríbeme',
     'project.viewGithub': 'Ver en GitHub',
-    'footer.built': 'Hecho con Astro y Tailwind CSS.',
-    'misc.references': 'Referencias disponibles a petición.'
+    'footer.built': 'Hecho con Astro y Tailwind CSS.'
   },
   en: {
     'nav.about': 'About',
@@ -35,7 +34,6 @@ export const ui = {
       "I'm always tinkering with this site and picking up new AI-assisted workflows. If you've got a project in mind or just want to talk shop, my inbox is open.",
     'contact.cta': 'Say hello',
     'project.viewGithub': 'View on GitHub',
-    'footer.built': 'Built with Astro and Tailwind CSS.',
-    'misc.references': 'References available upon request.'
+    'footer.built': 'Built with Astro and Tailwind CSS.'
   }
 } as const;
