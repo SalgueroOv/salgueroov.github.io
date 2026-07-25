@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import LoadingScreen from '../components/LoadingScreen.astro';
 import Header from '../components/Header.astro';
+import SocialRail from '../components/SocialRail.astro';
 import Footer from '../components/Footer.astro';
 import type { Lang } from '../i18n/utils';
 
@@ -22,15 +24,15 @@ const { title, lang } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-slate-950 text-slate-400 antialiased selection:bg-emerald-400/20 selection:text-emerald-200">
-    <div class="lg:flex">
-      <Header lang={lang} />
-      <main class="px-6 py-16 sm:px-12 lg:ml-[24rem] lg:flex-1 lg:px-24 lg:py-24">
-        <div class="mx-auto max-w-2xl">
-          <slot />
-          <Footer lang={lang} />
-        </div>
-      </main>
-    </div>
+  <body class="bg-neutral-950 text-neutral-400 antialiased selection:bg-amber-400/20 selection:text-amber-200">
+    <LoadingScreen />
+    <Header lang={lang} />
+    <SocialRail lang={lang} />
+    <main class="px-6 pt-28 pb-16 sm:px-12 lg:px-24">
+      <div class="mx-auto max-w-2xl">
+        <slot />
+        <Footer lang={lang} />
+      </div>
+    </main>
   </body>
 </html>

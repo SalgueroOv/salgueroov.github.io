@@ -156,10 +156,11 @@ export const cv: Record<Lang, CvContent> = {
     ],
     projects: [
       {
-        name: 'Parkinostic',
+        name: 'Merger Lab',
         description:
-          'Aplicación clínica para la recogida y consulta de datos de pacientes con Parkinson y otros trastornos del movimiento. Migrada de JSF/Primefaces a Spring Boot 3 con una base de datos en grafo Neo4j, modelando nuevas relaciones entre revisiones, diagnósticos y escalas.',
-        tech: ['Java 17', 'Spring Boot 3', 'Neo4j', 'JSF/Primefaces']
+          'Aplicación de escritorio para combinar varios archivos de hoja de cálculo sin necesidad de Excel, fórmulas ni conocimientos de programación. Permite fusionar mediante JOIN al estilo SQL (inner/left/right/outer) o apilar filas, con soporte para .xlsx, .xls, .csv y .ods, arrastre y reordenación de archivos, tutoriales integrados, actualizaciones automáticas y temas claro/oscuro, disponible en 8 idiomas.',
+        tech: ['Electron', 'Vue', 'Python'],
+        url: 'https://github.com/SalgueroOv/mergerlab'
       }
     ],
     languages: [
@@ -272,10 +273,11 @@ export const cv: Record<Lang, CvContent> = {
     ],
     projects: [
       {
-        name: 'Parkinostic',
+        name: 'Merger Lab',
         description:
-          "Clinical application for collecting and consulting data on patients with Parkinson's and other movement disorders. Migrated from JSF/Primefaces to Spring Boot 3 with a Neo4j graph database, modeling new relationships between reviews, diagnoses and scales.",
-        tech: ['Java 17', 'Spring Boot 3', 'Neo4j', 'JSF/Primefaces']
+          'Desktop app for merging multiple spreadsheet files without needing Excel, formulas or programming knowledge. Merge via SQL-style JOINs (inner/left/right/outer) or stack rows, with support for .xlsx, .xls, .csv and .ods, drag-and-drop file reordering, built-in tutorials, auto-updates and light/dark themes, available in 8 languages.',
+        tech: ['Electron', 'Vue', 'Python'],
+        url: 'https://github.com/SalgueroOv/mergerlab'
       }
     ],
     languages: [

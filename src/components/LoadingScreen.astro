@@ -1,0 +1,41 @@
+---
+---
+
+<div
+  id="loading-screen"
+  class="fixed inset-0 z-100 flex items-center justify-center bg-neutral-950 transition-opacity duration-700"
+  aria-hidden="true"
+>
+  <span
+    id="loading-mark"
+    class="scale-90 font-mono text-5xl font-bold tracking-[0.3em] text-amber-400 opacity-0 transition-all duration-700 ease-out sm:text-7xl"
+  >
+    ASO
+  </span>
+</div>
+
+<script>
+  const STORAGE_KEY = 'aso-intro-seen';
+  const screenEl = document.getElementById('loading-screen');
+  const mark = document.getElementById('loading-mark');
+
+  if (screenEl) {
+    if (sessionStorage.getItem(STORAGE_KEY)) {
+      screenEl.remove();
+    } else {
+      document.documentElement.classList.add('overflow-hidden');
+
+      requestAnimationFrame(() => {
+        mark?.classList.remove('opacity-0', 'scale-90');
+        mark?.classList.add('opacity-100', 'scale-100');
+      });
+
+      window.setTimeout(() => {
+        screenEl.classList.add('opacity-0', 'pointer-events-none');
+        document.documentElement.classList.remove('overflow-hidden');
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        window.setTimeout(() => screenEl.remove(), 700);
+      }, 1200);
+    }
+  }
+</script>
