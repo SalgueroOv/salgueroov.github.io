@@ -96,6 +96,9 @@ const data = cv[lang];
 </section>
 
 <script>
+  // Tabs de experiencia implementadas a mano (sin framework de UI): el estado
+  // activo vive en el atributo data-active, que Tailwind lee vía data-[active=true]:*
+  // en las clases del botón. Soporta varios bloques [data-tabs] en la página.
   document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((wrapper) => {
     const triggers = Array.from(wrapper.querySelectorAll<HTMLElement>('[data-tab-trigger]'));
     const panels = Array.from(wrapper.querySelectorAll<HTMLElement>('[data-tab-panel]'));
