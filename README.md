@@ -1,6 +1,13 @@
+<div align="center">
+
 # alejandrosalguero.es
 
-CV/portfolio personal de Alejandro Salguero.
+CV/portfolio personal de Alejandro Salguero
+
+[![Deploy](https://github.com/SalgueroOv/salgueroov.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/SalgueroOv/salgueroov.github.io/actions/workflows/deploy.yml)
+[![Sitio en vivo](https://img.shields.io/badge/sitio-en_vivo-16A34A?style=flat-square&logo=googlechrome&logoColor=white)](https://salgueroov.github.io/)
+
+</div>
 
 Es una web de una sola página con navegación por anclas (Sobre mí, Experiencia,
 Formación, Proyectos, Contacto), disponible en español (`/`, idioma por
@@ -13,6 +20,16 @@ una librería ni un proyecto pensado para que otras personas lo instalen o
 reutilicen.
 
 ## Stack técnico y por qué
+
+<p>
+  <img alt="Astro" src="https://img.shields.io/badge/Astro-000000?style=flat-square&logo=astro&logoColor=FF5D01" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+  <img alt="Tailwind CSS v4" src="https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+  <br/>
+  <img alt="pnpm" src="https://img.shields.io/badge/pnpm-F69220?style=flat-square&logo=pnpm&logoColor=white" />
+  <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
+  <img alt="GitHub Pages" src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" />
+</p>
 
 - **[Astro](https://astro.build) (output estático)** — el sitio es contenido
   mayormente estático (un CV), así que no hace falta un framework con
@@ -47,14 +64,17 @@ reutilicen.
 
 ```text
 src/
-  data/cv.ts            Única fuente del contenido del CV (nombre, experiencia,
-                         formación, proyectos, contacto), tipado y por idioma.
+  data/
+    cv.ts                  Única fuente del contenido del CV (nombre, experiencia,
+                            formación, proyectos, contacto), tipado y por idioma.
+    cv-print.ts             Variante del contenido ajustada para la versión imprimible del CV.
   i18n/
     ui.ts                Diccionario de strings de interfaz (nav, labels) por idioma.
     utils.ts              Helpers getLangFromUrl / useTranslations.
   layouts/BaseLayout.astro  <html>/head, carga global.css, monta Header/Footer/SocialRail.
   components/
     Cv.astro               Todo el contenido del CV en una página, con anclas y tabs de experiencia.
+    CvPrint.astro           Maquetación de una sola hoja para la versión imprimible/descargable del CV.
     Header.astro            Navbar fija con navegación activa por scroll (IntersectionObserver).
     Footer.astro             Pie de página.
     LanguageSwitcher.astro   Enlaces ES/EN.
@@ -63,7 +83,10 @@ src/
     SocialRail.astro         Barra lateral fija con enlaces a GitHub/LinkedIn/email.
   pages/
     index.astro              Home en español (idioma por defecto).
-    en/index.astro           Home en inglés.
+    cv-print.astro           Versión imprimible del CV en español.
+    en/
+      index.astro            Home en inglés.
+      cv-print.astro         Versión imprimible del CV en inglés.
 public/
   CNAME                    Dominio personalizado para GitHub Pages.
 .github/workflows/deploy.yml  Build + deploy automático a GitHub Pages en cada push a main.
