@@ -21,6 +21,7 @@ reutilicen.
 
 ## Stack técnico y por qué
 
+<div align="center">
 <p>
   <img alt="Astro" src="https://img.shields.io/badge/Astro-000000?style=flat-square&logo=astro&logoColor=FF5D01" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
@@ -30,6 +31,7 @@ reutilicen.
   <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
   <img alt="GitHub Pages" src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" />
 </p>
+</div>
 
 - **[Astro](https://astro.build) (output estático)** — el sitio es contenido
   mayormente estático (un CV), así que no hace falta un framework con
