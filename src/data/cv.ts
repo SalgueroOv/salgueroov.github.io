@@ -29,6 +29,7 @@ export interface CvContent {
     location: string;
     linkedin: string;
     github: string;
+    website: string;
   };
   stack: string[];
   experience: ExperienceItem[];
@@ -49,7 +50,8 @@ export const cv: Record<Lang, CvContent> = {
       email: 'salguero.ov@gmail.com',
       location: 'Dos Hermanas, Sevilla',
       linkedin: 'https://www.linkedin.com/in/asalguerov',
-      github: 'https://github.com/SalgueroOv'
+      github: 'https://github.com/SalgueroOv',
+      website: 'https://alejandrosalguero.es'
     },
     stack: [
       'Java 17',
@@ -117,6 +119,13 @@ export const cv: Record<Lang, CvContent> = {
           'Aplicación de escritorio para combinar varios archivos de hoja de cálculo sin necesidad de Excel, fórmulas ni conocimientos de programación. Permite fusionar mediante JOIN al estilo SQL (inner/left/right/outer) o apilar filas, con soporte para .xlsx, .xls, .csv y .ods, arrastre y reordenación de archivos, tutoriales integrados, actualizaciones automáticas y temas claro/oscuro, disponible en 8 idiomas.',
         tech: ['Electron', 'Vue', 'Python'],
         url: 'https://github.com/SalgueroOv/mergerlab'
+      },
+      {
+        name: 'CV/Portfolio personal',
+        description:
+          'Este mismo sitio web: CV/portfolio personal construido con Astro, i18n nativo (es/en) y Tailwind CSS v4, desplegado en GitHub Pages.',
+        tech: ['Astro', 'TypeScript', 'Tailwind CSS'],
+        url: 'https://github.com/SalgueroOv/salgueroov.github.io'
       }
     ]
   },
@@ -132,7 +141,8 @@ export const cv: Record<Lang, CvContent> = {
       email: 'salguero.ov@gmail.com',
       location: 'Dos Hermanas, Seville (Spain)',
       linkedin: 'https://www.linkedin.com/in/asalguerov',
-      github: 'https://github.com/SalgueroOv'
+      github: 'https://github.com/SalgueroOv',
+      website: 'https://alejandrosalguero.es'
     },
     stack: [
       'Java 17',
@@ -183,12 +193,12 @@ export const cv: Record<Lang, CvContent> = {
     ],
     education: [
       {
-        title: 'Higher Vocational Training in Multiplatform Application Development',
+        title: 'CFGS Desarrollo de Aplicaciones Multiplataforma',
         institution: 'IES Aguadulce (Almería)',
         period: '2019 — 2022 · Distance learning'
       },
       {
-        title: 'Higher Vocational Training in IT Systems Administration',
+        title: 'CFGS Administración de Sistemas Informáticos',
         institution: 'IES Gonzalo Nazareno (Dos Hermanas)',
         period: '2008 — 2011 · Partially completed'
       }
@@ -200,6 +210,13 @@ export const cv: Record<Lang, CvContent> = {
           'Desktop app for merging multiple spreadsheet files without needing Excel, formulas or programming knowledge. Merge via SQL-style JOINs (inner/left/right/outer) or stack rows, with support for .xlsx, .xls, .csv and .ods, drag-and-drop file reordering, built-in tutorials, auto-updates and light/dark themes, available in 8 languages.',
         tech: ['Electron', 'Vue', 'Python'],
         url: 'https://github.com/SalgueroOv/mergerlab'
+      },
+      {
+        name: 'Personal CV/Portfolio',
+        description:
+          'This very website: personal CV/portfolio built with Astro, native i18n (es/en) and Tailwind CSS v4, deployed on GitHub Pages.',
+        tech: ['Astro', 'TypeScript', 'Tailwind CSS'],
+        url: 'https://github.com/SalgueroOv/salgueroov.github.io'
       }
     ]
   }

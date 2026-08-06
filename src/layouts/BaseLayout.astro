@@ -23,6 +23,12 @@ const { title, lang } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      // Marca reveal-ready antes del primer pintado para que .reveal arranque
+      // oculto sin parpadeo (si JS está desactivado, la clase nunca se añade
+      // y el CSS de global.css no oculta nada).
+      document.documentElement.classList.add('reveal-ready');
+    </script>
   </head>
   <body class="bg-neutral-950 text-neutral-400 antialiased selection:bg-amber-400/20 selection:text-amber-200">
     <LoadingScreen />
@@ -34,5 +40,40 @@ const { title, lang } = Astro.props;
         <Footer lang={lang} />
       </div>
     </main>
+
+    <script>
+      const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
+      if (revealEls.length) {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      }
+
+      // Elementos ya visibles al cargar (cabecera, rail social, hero): en
+      // cascada, uno a uno, sincronizada con el fin de LoadingScreen.astro
+      // (evento 'intro-complete') para que no se revelen ocultos bajo ella.
+      const cascadeEls = document.querySelectorAll<HTMLElement>('.cascade');
+      if (cascadeEls.length) {
+        const STAGGER_MS = 55;
+        window.addEventListener(
+          'intro-complete',
+          () => {
+            cascadeEls.forEach((el, i) => {
+              window.setTimeout(() => el.classList.add('is-visible'), i * STAGGER_MS);
+            });
+          },
+          { once: true }
+        );
+      }
+    </script>
   </body>
 </html>

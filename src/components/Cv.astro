@@ -16,18 +16,18 @@ const data = cv[lang];
 <section id="about" class="scroll-mt-24 sm:max-w-3xl">
   <div class="flex flex-col-reverse gap-10 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
     <div class="sm:flex-1">
-      <h1 class="text-3xl font-bold text-neutral-100 sm:text-4xl">{data.name}</h1>
-      <p class="mt-2 text-lg font-medium text-amber-300">{data.role}</p>
+      <h1 class="cascade text-3xl font-bold text-neutral-100 sm:text-4xl">{data.name}</h1>
+      <p class="cascade mt-2 text-lg font-medium text-amber-300">{data.role}</p>
 
-      <div class="mt-10 space-y-4 text-base leading-relaxed text-neutral-300">
+      <div class="cascade mt-10 space-y-4 text-base leading-relaxed text-neutral-300">
         {data.summary.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </div>
-    <PhotoFrame alt={data.name} class="w-44 sm:w-60 lg:w-72" />
+    <PhotoFrame alt={data.name} class="cascade w-44 sm:w-60 lg:w-72" />
   </div>
 
-  <h3 class="mt-10 text-xs font-semibold tracking-widest text-neutral-200">{t('section.stack').toUpperCase()}</h3>
-  <ul class="mt-4 flex flex-wrap gap-2">
+  <h3 class="cascade mt-10 text-xs font-semibold tracking-widest text-neutral-200">{t('section.stack').toUpperCase()}</h3>
+  <ul class="cascade mt-4 flex flex-wrap gap-2">
     {
       data.stack.map((item) => (
         <li class="rounded-full border border-neutral-800 bg-neutral-900/50 px-3 py-1 font-mono text-xs text-amber-300">
@@ -38,7 +38,7 @@ const data = cv[lang];
   </ul>
 </section>
 
-<section id="experience" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-2xl sm:ml-auto">
+<section id="experience" class="reveal mt-32 scroll-mt-24 sm:mt-44 sm:max-w-2xl sm:ml-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.experience').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
@@ -119,7 +119,7 @@ const data = cv[lang];
   });
 </script>
 
-<section id="education" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-xl">
+<section id="education" class="reveal mt-32 scroll-mt-24 sm:mt-44 sm:max-w-xl">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.education').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
@@ -138,18 +138,18 @@ const data = cv[lang];
   </ol>
 </section>
 
-<section id="projects" class="mt-32 scroll-mt-24 sm:mt-44 sm:max-w-2xl sm:mx-auto">
+<section id="projects" class="reveal mt-32 scroll-mt-24 sm:mt-44 sm:max-w-3xl sm:mx-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.projects').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />
   </h2>
-  <ul class="mt-8 space-y-6">
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2">
     {
       data.projects.map((project) => (
-        <li class="rounded-lg border border-neutral-800 p-6 transition-colors hover:border-amber-400/40 hover:bg-neutral-900/40">
+        <li class="flex flex-col rounded-lg border border-neutral-800 p-4 transition-colors hover:border-amber-400/40 hover:bg-neutral-900/40">
           <p class="font-semibold text-neutral-100">{project.name}</p>
           <p class="mt-2 text-sm leading-relaxed text-neutral-400">{project.description}</p>
-          <ul class="mt-4 flex flex-wrap gap-2">
+          <ul class="mt-3 flex flex-wrap gap-2 pt-3 mt-auto">
             {project.tech.map((tech) => (
               <li class="rounded-full border border-neutral-800 px-3 py-1 font-mono text-xs text-amber-300">{tech}</li>
             ))}
@@ -159,7 +159,7 @@ const data = cv[lang];
               href={project.url}
               target="_blank"
               rel="noreferrer"
-              class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-neutral-300 hover:text-amber-300"
+              class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-neutral-300 hover:text-amber-300"
             >
               <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current">
                 <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -173,7 +173,7 @@ const data = cv[lang];
   </ul>
 </section>
 
-<section id="contact" class="mt-32 scroll-mt-24 pb-8 sm:mt-44 sm:max-w-md sm:mx-auto">
+<section id="contact" class="reveal mt-32 scroll-mt-24 pb-8 sm:mt-44 sm:max-w-md sm:mx-auto">
   <h2 class="flex items-center gap-4 text-sm font-bold tracking-widest text-neutral-100">
     {t('nav.contact').toUpperCase()}
     <span class="h-px flex-1 bg-neutral-800" />

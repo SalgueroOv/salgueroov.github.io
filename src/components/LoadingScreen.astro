@@ -67,6 +67,7 @@
     window.setTimeout(() => {
       screenEl.classList.add('opacity-0', 'pointer-events-none');
       document.documentElement.classList.remove('overflow-hidden');
+      window.dispatchEvent(new Event('intro-complete'));
       window.setTimeout(() => screenEl.remove(), 700);
     }, 1900);
   }

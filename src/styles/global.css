@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal,
+  .reveal-ready .cascade {
+    opacity: 0;
+    filter: blur(6px);
+    transition:
+      opacity 0.5s ease-out,
+      filter 0.5s ease-out;
+  }
+
+  .reveal-ready .reveal.is-visible,
+  .reveal-ready .cascade.is-visible {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
